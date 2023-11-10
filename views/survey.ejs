@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Survey</title>
+</head>
+<body>
+
+  <div id="welcome-screen">
+  <h1>Welcome to Customer Survey!</h1>
+  <button onclick="startSurvey()">Start Survey</button>
+</div>
+
+<div id="survey-form" style="display: none;">
+  <h1>Customer Survey</h1>
+  <form action="/submit" method="post" onsubmit="submitForm(event)">
+
+    <p id="question-number"></p>
+    <input type="hidden" id="current-question" name="currentQuestion" value="0">
+
+    <label id="question-label"></label>
+
+    <div id="rating-options" class="radio-btn">
+      <label><input type="radio" name="answer" value="1">1</label>
+      <label><input type="radio" name="answer" value="2">2</label>
+      <label><input type="radio" name="answer" value="3">3</label>
+      <label><input type="radio" name="answer" value="4">4</label>
+      <label><input type="radio" name="answer" value="5">5</label>
+    </div>
+
+    <textarea id="answer-textarea" name="answer" style="display: none;"></textarea>
+
+    <button type="button" onclick="prevQuestion()">Previous</button>
+    <button type="button" onclick="nextQuestion()">Next</button>
+    <button type="button" onclick="skipQuestion()">Skip</button>
+    <input type="submit" href="/submit" onclick="submitConfirmation()" value="Submit Survey">
+  </form>
+</div>
+
+<div id="thank-you-message" style="display: none;">
+  <h1>Thank you for completing the survey!</h1>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
